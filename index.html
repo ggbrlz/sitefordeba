@@ -1,14 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meu Site Teste</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<title>Meu Site</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Olá, GitHub Pages!</h1>
-  <p>Se você está vendo isso, seu site está funcionando.</p>
-  <button>Botão Teste</button>
+
+<!-- Spotify Player -->
+<div id="spotify-player">
+    <iframe src="https://open.spotify.com/embed/track/7JIuqL4ZqkpfGKQhYlrirs?si=405df4ca0d8746ba" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+<br>
+<br>
+<br>
+
+<!-- Slideshow de 5 fotos -->
+<div id="slideshow">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOEPLZEYNXiCylIFYJkoTm0NHJFGwIvg13tTofTAmSj-FPZBVnGCwmLqYGO61Duhp-h4gDqJU9Mn2-AloTaPBUMxnNG6HUv5vdjlGb5GYCLXZm5no6XboruEdqbex-ZlgYr5G9r7ZKxJg-VaQkqaVfT6g=w546-h971-s-no-gm?authuser=0" class="active" alt="Foto 1" />
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczP-72eJEPDFba2MeNFCHWNzqliAZJzFB6rgB5sufH4wEaIvO9_pm_pg_pHYs43mgCGLrmXs8Y-dhvw06f8P33p-cmc0iBcra5eW6S6q3z0hG8jHV6fJ-HjHruXhZAqNtN3CzU8lKp6Es_qotY705JNpqw=w546-h971-s-no-gm?authuser=0" class="vertical" alt="Foto 2" />
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczM1ixti9qeuzEijbvenvzL6xPqL6eGFPfqoMwbkSYYwUSjCH6-VQhL-6Cg41hzHqJF2GpyvaG03lZk2SDQM1VHxLEMfjsD4xWV8RVnI487mtUzRJkz2cX7tXyJJ8P2Oz6ugQ5H4GW6-bgVKmqQyRzYmwg=w1726-h971-s-no-gm?authuser=0" alt="Foto 3" />
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOa61OV4vxnyypeuaFuFfG7svlR1NGfSRNyx0aQ_KvV1lY2Dn5SkHnTPwWQbW-3w_EHtbj1LEvM7pd4hl7Jf9WYgXWoaAWjt1vXuw6bsbQANJyIZaB5j-H2PExA-0P9IC9JhVCpNhWlxazShYV4jAVlXg=w546-h971-s-no-gm?authuser=0" class="vertical" alt="Foto 4" />
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNtK2NxpgpOFYv2MMR0VMaoqRQUtWhwahIymltBdEkK92G94ni4vbRSYtb9-oqcgRMNW4EIdQu8rVj583asKwz_fyg9MIgR5svk4n4pLm6RD4o9OFootU7l7Rz3HOVydkUE8M67V935qD-Rg8bQWolFrw=w546-h971-s-no-gm?authuser=0" class="vertical" alt="Foto 5" />
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Frase grande -->
+<div id="frase">Estamos juntos, e eu <span class="vermelho">te amo</span> há:</div>
+<br>
+<br>
+<br>
+<br>
+<!-- Temporizador -->
+<div id="timer"></div>
+<br>
+<br>
+<br>
+<br>
+<!-- Texto editável -->
+<div id="meuTexto">Amor, era essa minha gracinha pra você. Vi em algum canto no tiktok decidi fazer o mesmo, mas programando e lançando esse site numa página própria minha, e consegui. Levei um tempinho bom, mas cá estamos. Debora, eu sonhei tanto em um dia poder fazer essas gracinhas e coisinhas com você, sonhei tanto em poder dizer que eu te amo, e o destino o fez tornar esses sonhos em realidade. Eu olhava todo desprezo e descaso que os seus passado tinham com você, e não me culminava ódio e raiva nenhum, apenas o anseio de que um dia EU poderia tornar uma experiência top pra você, que iria contradizer todas as desgraças q você viveu, e finalmente estou por aqui, e por mais que futuramente a gente não se faça presente como hoje, por alguma intervenção do destino, o fato de que talvez eu tenha sido a melhor pra você, e que você me amou genuinamente, já me trás o eterno alívio. Eu te amo agora e sempre, meu futuro é com você, e vou fazer de tudo por isso, cê já tá cansada de ouvir isso de mim, mas eu ainda não me cansei de dizer, e NUNCA vou em cansar.</div>
+ <div id="meuTexto">Feito com amor, pelo seu amor!❤️</div>
+
+<script>
+// Slideshow simples
+const slides = document.querySelectorAll('#slideshow img');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 4000); // troca a cada 4 segundos
+
+// Temporizador direto e curto
+const start = new Date(2025,5,27,23,0,0);
+const timerEl = document.getElementById('timer');
+
+function update() {
+  const now = new Date();
+  if(now < start) {
+    timerEl.textContent = 'Ainda não chegou a data!';
+    return;
+  }
+
+  let meses = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  if(now.getDate() < start.getDate()) meses--;
+
+  let tempDate = new Date(start);
+  tempDate.setMonth(tempDate.getMonth() + meses);
+
+  let diff = now - tempDate;
+
+  const dias = Math.floor(diff / 86400000);
+  diff -= dias * 86400000;
+
+  const horas = Math.floor(diff / 3600000);
+  diff -= horas * 3600000;
+
+  const minutos = Math.floor(diff / 60000);
+  diff -= minutos * 60000;
+
+  const segundos = Math.floor(diff / 1000);
+
+  timerEl.textContent = `${meses} mês${meses!==1?'es':''}, ${dias} dia${dias!==1?'s':''}, ${horas} hora${horas!==1?'s':''}, ${minutos} minuto${minutos!==1?'s':''}, ${segundos} segundo${segundos!==1?'s':''}`;
+}
+
+update();
+setInterval(update, 1000);
+</script>
+
 </body>
 </html>
